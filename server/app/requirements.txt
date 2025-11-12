@@ -4,4 +4,6 @@ pandas
 numpy
 scikit-learn
 joblib
-python-multipart
+python-multipartrequestsrequests
+requests
+python-dotenv
