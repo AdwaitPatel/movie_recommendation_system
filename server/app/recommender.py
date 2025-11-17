@@ -28,7 +28,7 @@ def fetch_poster_from_tmdb(title):
         'include_adult': False
     }
     try:
-        response = requests.get(f"{TMDB_BASE}/search/movie", params=params)
+        response = requests.get(f"{TMDB_BASE}/search/movie", params=params, timeout=5)
         response.raise_for_status()
         data = response.json()
         results = data.get('results', [])
