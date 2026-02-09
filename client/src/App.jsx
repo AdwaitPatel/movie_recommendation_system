@@ -9,8 +9,7 @@ function App() {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
 
-//   const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-  const API_BASE = import.meta.env.VITE_API_URL;
+  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
   const timersRef = useRef({});
   const [copiedIds, setCopiedIds] = useState([]);
 
@@ -35,7 +34,7 @@ function App() {
 
     try {
       const url = `${API_BASE}/recommend?title=${encodeURIComponent(
-        title
+        title,
       )}&k=${encodeURIComponent(k)}`;
       const res = await fetch(url);
       if (!res.ok) {
@@ -152,16 +151,33 @@ function App() {
                 </div>
 
                 <div className="p-4">
-                  <h3 className="text-lg font-medium truncate" title={m.title}>
-                    {m.title}
-                  </h3>
+                  <div className="flex items-baseline gap-2">
+                    <h3
+                      className="text-lg font-medium truncate"
+                      title={m.title}
+                    >
+                      {m.title}
+                    </h3>
+                    {m.year && (
+                      <span className="text-sm text-gray-400">{`(${m.year})`}</span>
+                    )}
+                  </div>
                   <p className="text-sm text-gray-400 mt-1">
-                    ID: <span className="text-gray-200">{m.movie_id}</span>
+                    TMDB ID: <span className="text-gray-200">{m.movie_id}</span>
+                    {m.imdb_id && (
+                      <span className="ml-3 text-xs text-gray-400">
+                        IMDb: <span className="text-gray-200">{m.imdb_id}</span>
+                      </span>
+                    )}
                   </p>
 
                   <div className="mt-4 flex items-center justify-between">
                     <a
-                      href={`https://www.themoviedb.org/movie/${m.movie_id}`}
+                      href={
+                        m.imdb_id
+                          ? `https://www.imdb.com/title/${m.imdb_id}`
+                          : `https://www.themoviedb.org/movie/${m.movie_id}`
+                      }
                       target="_blank"
                       rel="noreferrer"
                       className="text-sm text-indigo-300 hover:text-indigo-400"
@@ -185,12 +201,12 @@ function App() {
                         setCopiedIds((prev) =>
                           prev.includes(m.movie_id)
                             ? prev
-                            : [...prev, m.movie_id]
+                            : [...prev, m.movie_id],
                         );
 
                         timersRef.current[m.movie_id] = setTimeout(() => {
                           setCopiedIds((prev) =>
-                            prev.filter((id) => id !== m.movie_id)
+                            prev.filter((id) => id !== m.movie_id),
                           );
                           delete timersRef.current[m.movie_id];
                         }, 3000);
