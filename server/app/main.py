@@ -4,17 +4,24 @@ from recommender import recommend_by_title
 
 app = FastAPI(title="Movie Recommendation API")
 
+origins = [
+    "https://movie-recommendation-system-pca-knn.vercel.app",
+    "http://localhost:5173",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all for dev
+    allow_origins=origins,  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def root():
     return {"message": "Movie Recommendation API is running"}
+
 
 @app.get("/recommend")
 def recommend(title: str, k: int = 5):
