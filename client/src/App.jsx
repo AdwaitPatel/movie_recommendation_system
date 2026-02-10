@@ -163,14 +163,14 @@ function App() {
                       <span className="text-sm text-gray-400">{`(${m.year})`}</span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-400 mt-1">
+                  {/* <p className="text-sm text-gray-400 mt-1">
                     TMDB ID: <span className="text-gray-200">{m.movie_id}</span>
                     {m.imdb_id && (
                       <span className="ml-3 text-xs text-gray-400">
                         IMDb: <span className="text-gray-200">{m.imdb_id}</span>
                       </span>
                     )}
-                  </p>
+                  </p> */}
 
                   <div className="mt-4 flex items-center justify-between">
                     <a
