@@ -47,7 +47,7 @@ def root():
 
                         <div class="actions">
                             <a class="btn" href="/docs" target="_blank">Open API Docs</a>
-                            <a class="btn" href="http://localhost:5173" target="_blank" style="background:#10b981">Open Frontend</a>
+                            <a class="btn" href="https://movie-recommendation-system-pca-knn.vercel.app" target="_blank" style="background:#10b981">Open Frontend</a>
                         </div>
 
                         <div class="meta">
