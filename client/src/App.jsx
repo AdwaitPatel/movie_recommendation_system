@@ -9,7 +9,8 @@ function App() {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
 
-  const API_BASE = import.meta.env.VITE_API_URL || "https://movie-recommendation-system-9f4s.onrender.com";
+  const API_BASE = import.meta.env.VITE_API_URL;
+  
   const timersRef = useRef({});
   const [copiedIds, setCopiedIds] = useState([]);
 
