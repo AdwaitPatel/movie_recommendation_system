@@ -5,7 +5,10 @@ from recommender import recommend_by_title
 
 app = FastAPI(title="Movie Recommendation API")
 
-origins = ["https://movie-recommendation-system-pca-knn.vercel.app"]
+origins = [
+    "https://movie-recommendation-system-pca-knn.vercel.app",
+    "http://localhost:5173",
+    ]
 
 app.add_middleware(
     CORSMiddleware,

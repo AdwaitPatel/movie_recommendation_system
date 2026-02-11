@@ -239,4 +239,9 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+
+
+import Home from "./home";
+
+export default Home;
